@@ -73,10 +73,10 @@ theme_mode: dark
 # will be added to all image (site avatar & posts' images) paths starting with '/'
 #
 # e.g. 'https://cdn.com'
-img_cdn: 'https://github.com/Furkathertaha/personal_cdn/blob/main'
+img_cdn: #'https://github.com/Furkathertaha/personal_cdn/blob/main'
 
 # the avatar on sidebar, support local or CORS resources
-avatar: '/sample_36800-0.png'
+avatar: 'https://github.com/Furkathertaha/personal_cdn/blob/main/sample_36800-0.png'
 
 # The URL of the site-wide social preview image used in SEO `og:image` meta tag.
 # It can be overridden by a customized `page.image` in front matter.
