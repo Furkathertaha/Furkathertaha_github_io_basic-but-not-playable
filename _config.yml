@@ -14,9 +14,11 @@ timezone: Asia/Shanghai
 # jekyll-seo-tag settings › https://github.com/jekyll/jekyll-seo-tag/blob/master/docs/usage.md
 # ↓ --------------------------
 
-title: Chirpy # the main title
+title: Frankel Zhao
+#Chirpy # the main title
 
-tagline: A text-focused Jekyll theme # it will display as the sub-title
+tagline: Zhiwei Zhao, or Frankel·Taha·Furkather 
+#A text-focused Jekyll theme # it will display as the sub-title
 
 description: >- # used by seo meta and the atom feed
   A minimal, responsive and feature-rich Jekyll theme for technical writing.
@@ -26,7 +28,7 @@ description: >- # used by seo meta and the atom feed
 url: "https://Furkathertaha.github.io"
 
 github:
-  username: github_username # change to your github username
+  username: Furkathertaha #github_username # change to your github username
 
 twitter:
   username: twitter_username # change to your twitter username
@@ -63,17 +65,18 @@ google_analytics:
 #     light  - Use the light color scheme
 #     dark   - Use the dark color scheme
 #
-theme_mode: # [light|dark]
+theme_mode: dark
+# [light|dark]
 
 # The CDN endpoint for images.
 # Notice that once it is assigned, the CDN url
 # will be added to all image (site avatar & posts' images) paths starting with '/'
 #
 # e.g. 'https://cdn.com'
-img_cdn:
+img_cdn: https://github.com/Furkathertaha/personal_cdn/blob/main
 
 # the avatar on sidebar, support local or CORS resources
-avatar:
+avatar: /sample_36800-0.png
 
 # The URL of the site-wide social preview image used in SEO `og:image` meta tag.
 # It can be overridden by a customized `page.image` in front matter.
