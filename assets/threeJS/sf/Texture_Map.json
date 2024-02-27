@@ -1,0 +1,83 @@
+{
+  "id": 11,
+  "name": "Texture Map",
+  "fragment": "// from https://github.com/SFML/SFML/wiki/Source:-Radial-Gradient-Shader\n#define THREE\n\n#ifdef GL_ES\nprecision mediump float;\nprecision mediump int;\n#endif\n\n// attributes\nvarying vec2 v_position;\nvarying vec2 v_uv;\nvarying vec4 v_color;\n\n// default uniforms\nuniform sampler2D u_texture;\n\n// custom uniforms\n#ifdef LIBGDX\nuniform vec3 u_color; // color of the outline\nuniform float u_offset; // thickness of the outline\nuniform float u_step; // step to check for neighbors\n#endif\n#ifdef THREE\nconst vec3 u_color = vec3(0,1,0); // color of the outline\nconst float u_offset = 0.1; // thickness of the outline\nconst float u_step = 0.01; // step to check for neighbors\n#endif\n\nuniform mat4 modelMatrix;\nuniform mat4 modelViewMatrix;\nuniform mat4 projectionMatrix;\nuniform mat4 viewMatrix;\nuniform mat3 normalMatrix;\n\nuniform float expand;\nuniform float radius;\nuniform vec2 lightPosition;\nuniform vec2 windowSize;\n\n#define ALPHA_VALUE_BORDER 0.5\n\nfloat getDistanceToEdge(){\n    float minDistance = 100.0;\n    for( float ix = -u_offset; ix < u_offset; ix += u_step){\n        for( float iy = -u_offset; iy < u_offset; iy += u_step ){\n             if(v_uv.x < 0.1) {\n                 return v_uv.x * 10.;\n            }\n            else if(v_uv.x > 0.9) {\n                 return (1. - v_uv.x) * 10.;\n            }  \n            if(v_uv.y < 0.1){\n                 return v_uv.y * 10.;\n            }\n            else if(v_uv.y > 0.9){\n                 return (1.0 - v_uv.y) * 10.;\n            }\n            // if(v_uv.x < 0.1){\n            //      return 0.;\n            // }\n            float alpha = texture2D(u_texture, v_uv + vec2(ix, iy)).a;\n            if(alpha < 1.0){\n                return 0.0;\n            }\n            // else{\n            //     return 100.0;\n            // }\n            // vec4 v = projectionMatrix * modelViewMatrix * vec4( v_position, 0.0, 1.0);\n            // vec4 pixelPosition = projectionMatrix * modelViewMatrix * vec4(v_uv.x + ix, v_uv.y + iy, 1.0, 1.0);\n            // float offsetAlpha = texture2D(u_texture, v.xy).a;\n            // pixel close by is transparent\n            // if (offsetAlpha < ALPHA_VALUE_BORDER){\n                // return 0.;\n                // float distance = sqrt(ix * ix + iy * iy);\n                // if(distance < minDistance){\n                    // minDistance = distance;\n                // }\n            // }\n        }\n    }\n   \n    return minDistance;\n}\n\nvoid main() {\n    vec4 lightColor = vec4(1,1,1,1);\n    vec4 textureColor = texture2D(u_texture, v_uv);\n    float r = getDistanceToEdge();\n    \n    // if(distanceToEdge > u_offset){\n    //     gl_FragColor = textureColor;\n    // }\n    // else{\n        // alpha = distanceToEdge / u_offset;\n        // vec4 edgeColor = vec4(1,0,0,1);\n        // vec4 textureColor = texture2D(u_texture, v_uv);\n\t    // gl_FragColor = mix(edgeColor, textureColor, alpha);\n\t    gl_FragColor = mix(vec4(textureColor.rgb,r), lightColor.rgba, (1. - expand) / (r - expand)); \n\t    // vec4(textureColor.rgb, alpha);\n    // }\n}\n\n\n",
+  "vertex": "/**\n* Vertex shader that wraps LibGDX or Three.js input for vertex fragment processing\n* OpenGL attributes: https://www.opengl.org/sdk/docs/tutorials/ClockworkCoders/attributes.php\n* LibGDX attributes: https://github.com/libgdx/libgdx/wiki/Shaders\n* Three.js attributes: https://threejs.org/docs/#api/en/renderers/webgl/WebGLProgram\n*/\n\n// #define LIBGDX\n#define THREE\n\n// set shader precision\nprecision mediump float;\nprecision mediump int;\n\n#ifdef LIBGDX\n// default libgdx attributes\nattribute vec2 a_position;\nattribute vec2 a_textCoord0;\nattribute vec4 a_color;\n\n// default libgdx uniforms\nuniform mat4 u_projTrans;\n#endif\n\n#ifdef THREE\n// default three.js attributes\n// Attributes are only available in the vertex shader. We can pass them to the fragment shader using varyings.\nattribute vec3 position;\nattribute vec2 uv;\n\n// default three.js attributes for normal\n// attribute vec3 normal;\n// attribute vec2 uv2;\n\n// default three.js uniforms available to both fragment and vertex shader\nuniform mat4 modelMatrix;\nuniform mat4 modelViewMatrix;\nuniform mat4 projectionMatrix;\nuniform mat4 viewMatrix;\nuniform mat3 normalMatrix;\nuniform vec2 uvScale;\n\n// default shaderforg uniforms\nuniform vec3 cameraPosition;\nuniform float time;\n#endif\n\n// variables passed to fragment shader\nvarying vec2 v_position;\nvarying vec2 v_uv;\nvarying vec4 v_color;\n\nvoid main() {\n    // pass attributes to vertex fragment\n    #ifdef LIBGDX\n        v_position = a_position.xy;\n        v_uv = a_textCoord0;\n        v_color = a_color;        \n        gl_Position =  u_projTrans * a_position;\n    #endif\n    #ifdef THREE\n        v_position = position.xy;\n        v_uv = uv;\n        v_color = vec4(1,1,1,1); // color is conditional on three.js        \n        gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0);\n    #endif\n}",
+  "uniforms": {
+    "u_texture": {
+      "name": "u_texture",
+      "displayName": null,
+      "type": "t",
+      "glslType": "sampler2D",
+      "useGridHelper": false,
+      "useRange": false,
+      "range": null,
+      "isRandom": false,
+      "randomRange": null,
+      "useToggle": false,
+      "toggle": null,
+      "description": ""
+    },
+    "expand": {
+      "name": "expand",
+      "displayName": null,
+      "type": "f",
+      "glslType": "float",
+      "useGridHelper": false,
+      "useRange": false,
+      "range": null,
+      "isRandom": false,
+      "randomRange": null,
+      "useToggle": false,
+      "toggle": null,
+      "description": ""
+    },
+    "radius": {
+      "name": "radius",
+      "displayName": null,
+      "type": "f",
+      "glslType": "float",
+      "useGridHelper": false,
+      "useRange": false,
+      "range": null,
+      "isRandom": false,
+      "randomRange": null,
+      "useToggle": false,
+      "toggle": null,
+      "description": ""
+    },
+    "windowSize": {
+      "name": "windowSize",
+      "displayName": null,
+      "type": "v2",
+      "glslType": "vec2",
+      "useGridHelper": false,
+      "useRange": false,
+      "range": null,
+      "isRandom": false,
+      "randomRange": null,
+      "useToggle": false,
+      "toggle": null,
+      "description": ""
+    },
+    "lightPosition": {
+      "name": "lightPosition",
+      "displayName": null,
+      "type": "v2",
+      "glslType": "vec2",
+      "useGridHelper": false,
+      "useRange": false,
+      "range": null,
+      "isRandom": false,
+      "randomRange": null,
+      "useToggle": false,
+      "toggle": null,
+      "description": ""
+    }
+  },
+  "url": "http://shaderfrog.com/app/view/11",
+  "user": {
+    "username": "andrewray",
+    "url": "http://shaderfrog.com/app/profile/andrewray"
+  }
+}

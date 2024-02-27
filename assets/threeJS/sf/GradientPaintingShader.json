@@ -1,0 +1,55 @@
+{
+  "id": 6377,
+  "name": "GradientPaintingShader",
+  "fragment": "precision highp float;\r\nprecision highp int;\r\n\r\nvarying vec2 uvs;\r\n\r\nuniform vec2 u_resolution;\r\nuniform float u_time;\r\n\r\n\r\nuniform sampler2D noise;\r\n\r\nvoid main(){\r\n    \r\n    vec2 uv = uvs;\r\n    vec3 col = vec3(0.0);\r\n    \r\n\r\n    vec3 c1 = vec3(0.0,1.0,0.5);//teal\r\n    vec3 c2 = vec3(0.0, 1.0, 1.0);//light blue\r\n    \r\n    col += mix(c1, c2, uv.x);\r\n    \r\n    \r\n    gl_FragColor = vec4(col,1.0);\r\n}",
+  "vertex": "precision highp float;\nprecision highp int;\n\nuniform mat4 modelViewMatrix;\nuniform mat4 projectionMatrix;\n\nvarying vec2 uvs;\n\nattribute vec3 position;\n\nattribute vec2 uv;\n\n\nvoid main() {\n\n    uvs = uv;\n    gl_Position = projectionMatrix * modelViewMatrix * vec4( position, 1.0 );\n\n}",
+  "uniforms": {
+    "u_resolution": {
+      "name": "u_resolution",
+      "displayName": null,
+      "type": "v2",
+      "glslType": "vec2",
+      "useGridHelper": false,
+      "useRange": false,
+      "range": null,
+      "isRandom": false,
+      "randomRange": null,
+      "useToggle": false,
+      "toggle": null,
+      "description": ""
+    },
+    "u_time": {
+      "name": "u_time",
+      "displayName": null,
+      "type": "f",
+      "glslType": "float",
+      "useGridHelper": false,
+      "useRange": false,
+      "range": null,
+      "isRandom": false,
+      "randomRange": null,
+      "useToggle": false,
+      "toggle": null,
+      "description": ""
+    },
+    "noise": {
+      "name": "noise",
+      "displayName": null,
+      "type": "t",
+      "glslType": "sampler2D",
+      "useGridHelper": false,
+      "useRange": false,
+      "range": null,
+      "isRandom": false,
+      "randomRange": null,
+      "useToggle": false,
+      "toggle": null,
+      "description": ""
+    }
+  },
+  "url": "http://shaderfrog.com/app/view/6377",
+  "user": {
+    "username": "XiC",
+    "url": "http://shaderfrog.com/app/profile/andrewray"
+  }
+}

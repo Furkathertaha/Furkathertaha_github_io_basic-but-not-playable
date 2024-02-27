@@ -1,0 +1,56 @@
+{
+  "id": 6876,
+  "name": "Fork of New Composed Shader2",
+  "fragment": "precision highp float;\nprecision highp int;\nuniform mat4 modelMatrix;\nuniform mat4 modelViewMatrix;\nuniform mat4 projectionMatrix;\nuniform mat3 normalMatrix;\nuniform float highlightIntensity;\nuniform vec3 highlightColor;\nuniform sampler2D wavetexture;\nvarying vec3 vNormal;\nvarying float light;\nvarying vec2 vUv;\nvec4 Ripple1704358464485_336_main() \n                                                        {\n                                                            vec4 Ripple1704358464485_336_gl_FragColor = vec4(0.0);\n                                                            vec2 uv = vUv;\n                                                            vec4 ocean = texture2D(wavetexture, uv);\n                                                            vec4 combine = vec4(clamp(highlightColor * highlightIntensity * light, 0.0, 1.0), 1.0);\n                                                            Ripple1704358464485_336_gl_FragColor = mix(ocean, combine, 0.0);\n                                                            return Ripple1704358464485_336_gl_FragColor *= 1.0;\n                                                        }\nvoid main() \n                                                        {\n                                                            gl_FragColor = Ripple1704358464485_336_main();                                                        }\n",
+  "vertex": "precision highp float;\nprecision highp int;\nuniform mat4 modelMatrix;\nuniform mat4 modelViewMatrix;\nuniform mat4 projectionMatrix;\nuniform mat3 normalMatrix;\nuniform float time;\nuniform float speed;\nuniform float frequency;\nuniform float amplitude;\nuniform float lowerBound;\nattribute vec3 position;\nattribute vec2 uv;\nattribute vec3 normal;\nvarying vec3 vNormal;\nvarying float light;\nvarying vec3 vPosition;\nvarying vec2 vUv;\nvec4 Ripple1704358464485_336_main() \n                                                        {\n                                                            vec4 Ripple1704358464485_336_gl_Position = vec4(0.0);\n                                                            float taper = clamp(position.y, lowerBound, 1.0);\n                                                            vUv = uv;\n                                                            vec3 offset = normalize(vec3(0.0) - position) * (amplitude * sin(speed * time + position.y * frequency)) * taper;\n                                                            vec3 newPosition = position + vec3(offset.x, 0.0, offset.z);\n                                                            light = amplitude * sin(speed * time + 1.0 + position.y * frequency) * taper;\n                                                            vPosition = newPosition;\n                                                            Ripple1704358464485_336_gl_Position = projectionMatrix * modelViewMatrix * vec4(newPosition, 1.0);\n                                                            return Ripple1704358464485_336_gl_Position *= 1.0;\n                                                        }\nvoid main() \n                                                        {\n                                                            gl_Position = Ripple1704358464485_336_main();                                                        }\n",
+  "uniforms": {
+    "amplitude": {
+      "value": "0.0009",
+      "type": "f",
+      "glslType": "float"
+    },
+    "time": {
+      "type": "f",
+      "glslType": "float"
+    },
+    "speed": {
+      "value": "10",
+      "type": "f",
+      "glslType": "float"
+    },
+    "frequency": {
+      "value": "22",
+      "type": "f",
+      "glslType": "float"
+    },
+    "highlightIntensity": {
+      "value": "2",
+      "type": "f",
+      "glslType": "float"
+    },
+    "highlightColor": {
+      "value": {
+        "r": 0.615686274509804,
+        "g": 0.5529411764705883,
+        "b": 0.9607843137254902
+      },
+      "type": "c",
+      "glslType": "vec3"
+    },
+    "lowerBound": {
+      "value": "20",
+      "type": "f",
+      "glslType": "float"
+    },
+    "wavetexture": {
+      "value": null,
+      "type": "t",
+      "glslType": "sampler2D"
+    }
+  },
+  "url": "http://shaderfrog.com/app/view/6876",
+  "user": {
+    "username": "ginphreak",
+    "url": "http://shaderfrog.com/app/profile/andrewray"
+  }
+}
