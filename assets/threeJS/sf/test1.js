@@ -221,11 +221,12 @@ function init() {
     } );
     }
 
-    bnum =12;
+    bnum =14;
     for (let i =0; i<bnum; i++)
     {
     loader.load( 
-        './output.stl', 
+        //'./output.stl', 
+        './bodyy.stl', 
         function ( geometry ) {
         //const material = new THREE.MeshPhongMaterial( { color: 0xff9c7c, specular: 0x494949, shininess: 200 } );
         meshB.push( new THREE.Mesh( geometry) );//, material );
@@ -241,7 +242,9 @@ function init() {
         });
 
         //mesh.rotation.set( 0, - Math.PI / 2, 0 );
-        meshB[i].scale.set( 0.5, 0.25, 0.5 );
+
+        //meshB[i].scale.set( 0.5, 0.25, 0.5 );
+        meshB[i].scale.set( 0.2, 0.1, 0.2 );
         meshB[i].position.set( 0, - 0.25, 0. );
         meshB[i].rotation.set( - Math.PI / 2, 0, 0 );
         //meshB[0].castShadow = true;
@@ -269,6 +272,40 @@ function init() {
         meshTop.material = mtlt;
     });
     scene.add( meshTop );
+
+/*
+    loader.load( 
+        './output.stl', 
+        function ( geometry ) {
+        var met1 =  new THREE.Mesh( geometry) ;    
+        runtime.load([
+            './Funny_Bunny.json'
+            ], function(shaders) {
+            mtl = runtime.get(shaders[0].name);
+            met1.material = mtl;
+        });
+        met1.scale.set( 0.5, 0.25, 0.5 );
+        met1.position.set( 0, - 0.25, 0. );
+        met1.rotation.set( - Math.PI / 2, 0, 0 );
+        scene.add( met1 );
+    } );
+
+    loader.load( 
+        './bodyy.stl', 
+        function ( geometry ) {
+        var met2 =  new THREE.Mesh( geometry) ;    
+        runtime.load([
+            './Funny_Bunny.json'
+            ], function(shaders) {
+            mtl = runtime.get(shaders[0].name);
+            met2.material = mtl;
+        });
+        met2.scale.set( 0.2, 0.2, 0.2 );
+        met2.position.set( 0, - 0.25-3, 0. );
+        met2.rotation.set( - Math.PI / 2, 0, 0 );
+        scene.add( met2 );
+    } );
+*/
 
 
     // Lights
@@ -335,7 +372,7 @@ function animate() {
     requestAnimationFrame( animate );
 
     render();
-    stats.update();
+    //stats.update();
 
 }
 
@@ -350,7 +387,7 @@ function render() {
     var thetat = 0.2*(timeR + 0.6);
     tou.position.x = Math.cos(thetat)*15;
     tou.position.z = Math.sin(thetat)*15;
-    tou.position.y = Math.cos(3*thetat)*1-5;
+    tou.position.y = Math.cos(3*thetat)*1-5+0.5;
    
     if(Math.sin(thetat)>0)
     {
@@ -361,7 +398,7 @@ function render() {
     }
     tou.rotation.z = -thetat;
 
-    var thetaj = 0.2*(timeR - 1.2);
+    var thetaj = 0.2*(timeR - 1.5);
     jiao[0].position.x = Math.cos(thetaj)*17;
     jiao[0].position.z = Math.sin(thetaj)*17;
     jiao[0].position.y = Math.cos(3*thetaj)*1-2-5;
@@ -389,7 +426,7 @@ function render() {
     jiao[1].rotation.z = -thetaj;
 
 
-     thetaj = 0.2*(timeR - 3.6);
+     thetaj = 0.2*(timeR - 4.5);
     jiao[2].position.x = Math.cos(thetaj)*17;
     jiao[2].position.z = Math.sin(thetaj)*17;
     jiao[2].position.y = Math.cos(3*thetaj)*1-2-5;
@@ -420,7 +457,16 @@ for(let i =0;i<bnum;i++)
 {
     var time = timeR - 0.6*i;
     var theta = 0.2*time;
-    meshB[i].scale.y = 0.3-0.07*Math.abs(Math.cos(3*theta));
+    if (i > 8)
+    {
+        meshB[i].scale.x = 0.2 - (i-8)*0.015 ;
+        meshB[i].scale.z = 0.2 - (i-8)*0.015 ;
+        meshB[i].scale.y = 0.2 - (i-8)*0.02*(  0.3-0.07*Math.abs(Math.cos(3*theta))  );
+    }
+    else
+    {
+        meshB[i].scale.y = 0.3-0.07*Math.abs(Math.cos(3*theta));
+    }
     meshB[i].position.x = Math.cos(theta)*15;
     meshB[i].position.z = Math.sin(theta)*15;
     meshB[i].position.y = Math.cos(3*theta)*1-5;
