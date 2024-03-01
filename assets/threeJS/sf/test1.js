@@ -5,6 +5,7 @@ let camera, cameraTarget, scene, renderer;
 let tou;
 let jiao=[];
 let meshB=[];
+let wei;
 let bnum;
 let plane;
 
@@ -66,7 +67,7 @@ function init() {
     var meshBalls = [];
     for (let id = 0; id<200;id++)
     {
-    var ball = new THREE.SphereGeometry( 0.03+0.03*Math.random(), 20, 20 );
+    var ball = new THREE.SphereGeometry( 0.06+0.06*Math.random(), 20, 20 );
     meshBalls.push( new THREE.Mesh( ball ) );
     meshBalls[id].position.x = -20+40*Math.random();
     meshBalls[id].position.z = -20+40*Math.random();
@@ -256,7 +257,24 @@ function init() {
     }
     //var meshc = mesh.clone();
 
-
+    loader.load( 
+        './wei.stl', 
+        //'./output.stl',
+        function ( geometry ) {
+        //const material = new THREE.MeshPhongMaterial( { color: 0xff9c7c, specular: 0x494949, shininess: 200 } );
+        wei =  new THREE.Mesh( geometry) ;//, material );
+        runtime.load([
+            './Funny_Bunny.json'
+            //'GradientPaintingShader.json'
+            ], function(shaders) {
+            mtl = runtime.get(shaders[0].name);
+            wei.material = mtl;          
+        });
+        wei.scale.set( 0.11, 0.11, 0.11 );
+        wei.position.set( 0, 0, 0 );
+        wei.rotation.set( - Math.PI / 2,  0,  0 );
+        scene.add( wei );
+    } );
     
     var topGeometry = new THREE.SphereGeometry( 3, 20, 20 );
     meshTop = new THREE.Mesh( topGeometry );
@@ -479,6 +497,21 @@ for(let i =0;i<bnum;i++)
     }
     meshB[i].rotation.z = -theta;
 }
+
+    var thetaw = 0.2*(timeR - 0.6*bnum+0.1);
+    wei.position.x = Math.cos(thetaw)*15;
+    wei.position.z = Math.sin(thetaw)*15;
+    wei.position.y = Math.cos(3*thetaw)*1-5+0.5-0.5;
+
+    if(Math.sin(thetaw)>0)
+    {
+    wei.rotation.y = -Math.atan(Math.sin(3*thetaw)*2.*3/15);
+    }
+    else{
+    wei.rotation.y = Math.atan(Math.sin(3*thetaw)*2.*3/15);
+    }
+    wei.rotation.z = -thetaw;
+
     //camera.position.x = Math.cos( timer ) * 10;
     //camera.position.z = Math.sin( timer ) * 10;
     camera.position.x = 30+Math.cos(0.3*time)*5;//cos(0.1*time)*5;
