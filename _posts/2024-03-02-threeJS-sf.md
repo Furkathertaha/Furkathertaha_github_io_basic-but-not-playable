@@ -1,3 +1,11 @@
+---
+layout: post
+title:  "threeJs Chinese Drogon Animation!"
+date: 2024-03-02 00:00:00 +/-0000
+categories: []
+tags: [cg]
+---
+
 # SPACE STYLE DRAGON SCENE ANIMATION
 
 A WebGL-based Chinese dragon animation with STL loader and GLSL shader imposed via Three.js. 
