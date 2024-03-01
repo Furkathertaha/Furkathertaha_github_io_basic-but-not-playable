@@ -47,34 +47,34 @@ A WebGL-based Chinese dragon animation with STL loader and GLSL shader imposed v
 ## THREE.js code 
 [https://furkathertaha.github.io/assets/threeJS/sf/test2.js](https://furkathertaha.github.io/assets/threeJS/sf/test2.js)
 ## GL shader code (GLSL)
-[Dragon head & tail](https://furkathertaha.github.io/assets/threeJS/sf/MeronSoda_s_BRDF.json) $~~~~$
-[Dragon body](https://furkathertaha.github.io/assets/threeJS/sf/MeronSoda_s_BRDF_copper.json) $~~~~$
-[Dragon claw](https://furkathertaha.github.io/assets/threeJS/sf/MeronSoda_s_BRDF_red.json) $~~~~$
-[Star1](https://furkathertaha.github.io/assets/threeJS/sf/Fork_of_New_Composed_Shader.json) $~~~~$
-[Star2](https://furkathertaha.github.io/assets/threeJS/sf/Sun.json) $~~~~$
-[Background](https://furkathertaha.github.io/assets/threeJS/sf/Star_Field.json) $~~~~$
-[Cosmic dust](https://furkathertaha.github.io/assets/threeJS/sf/dash/0.json) $~~~~$
+[Dragon head & tail](https://furkathertaha.github.io/assets/threeJS/sf/MeronSoda_s_BRDF.json) &emsp;
+[Dragon body](https://furkathertaha.github.io/assets/threeJS/sf/MeronSoda_s_BRDF_copper.json) &emsp;
+[Dragon claw](https://furkathertaha.github.io/assets/threeJS/sf/MeronSoda_s_BRDF_red.json) &emsp;
+[Star1](https://furkathertaha.github.io/assets/threeJS/sf/Fork_of_New_Composed_Shader.json) &emsp;
+[Star2](https://furkathertaha.github.io/assets/threeJS/sf/Sun.json) &emsp;
+[Background](https://furkathertaha.github.io/assets/threeJS/sf/Star_Field.json) &emsp;
+[Cosmic dust](https://furkathertaha.github.io/assets/threeJS/sf/dash/0.json) &emsp;
 [Robotic metal](https://furkathertaha.github.io/assets/threeJS/sf/Funny_Bunny.json)
 ## models (STL)
-[Dragon Head](https://furkathertaha.github.io/assets/threeJS/sf/tou.stl) $~~~~$
-[Dragon Body](https://furkathertaha.github.io/assets/threeJS/sf/bodyy.stl) $~~~~$
-[Dragon Claw](https://furkathertaha.github.io/assets/threeJS/sf/jiao.stl) $~~~~$
+[Dragon Head](https://furkathertaha.github.io/assets/threeJS/sf/tou.stl) &emsp;
+[Dragon Body](https://furkathertaha.github.io/assets/threeJS/sf/bodyy.stl) &emsp;
+[Dragon Claw](https://furkathertaha.github.io/assets/threeJS/sf/jiao.stl) &emsp;
 [Dragon Tail](https://furkathertaha.github.io/assets/threeJS/sf/wei.stl)
 ## textures (png)
 [Cosmic Dust](https://furkathertaha.github.io/assets/threeJS/sf/thumb_contrast-noise.png)
 
 ## Video (mp4)
-[screengrab1](https://furkathertaha.github.io/assets/videos/long2.mp4) $~~~~$
+[screengrab1](https://furkathertaha.github.io/assets/videos/long2.mp4) &emsp;
 [screengrab2](https://furkathertaha.github.io/assets/videos/long1.mp4)
 
 ## Presentation (pdf)
-[presentation](https://github.com/Furkathertaha/personal_cdn/blob/main/presentation.pdf) $~~~~$
+[presentation](https://github.com/Furkathertaha/personal_cdn/blob/main/presentation.pdf) &emsp;
 [document](https://github.com/Furkathertaha/personal_cdn/blob/main/report.pdf)
  
 ## Demo
 
-![demo1](https://github.com/Furkathertaha/personal_cdn/blob/main/l2.gif)  $~~~~$ ![demo2](https://github.com/Furkathertaha/personal_cdn/blob/main/l1.gif) 
+[demo1.gif](https://github.com/Furkathertaha/personal_cdn/blob/main/l2.gif)  &emsp; [demo2.gif](https://github.com/Furkathertaha/personal_cdn/blob/main/l1.gif) 
 
 -Screen Shots:
 
-![demo3](https://github.com/Furkathertaha/personal_cdn/blob/main/l2.png) $~~~~~$ ![demo4](https://github.com/Furkathertaha/personal_cdn/blob/main/l1.png)
+[demo3.png](https://github.com/Furkathertaha/personal_cdn/blob/main/l2.png) &emsp; [demo4.png](https://github.com/Furkathertaha/personal_cdn/blob/main/l1.png)
