@@ -68,8 +68,8 @@ A WebGL-based Chinese dragon animation with STL loader and GLSL shader imposed v
 [screengrab2](https://furkathertaha.github.io/assets/videos/long1.mp4)
 
 ## Presentation (pdf)
-[presentation](https://github.com/Furkathertaha/personal_cdn/blob/main/presentation.pdf) &emsp;
-[document](https://github.com/Furkathertaha/personal_cdn/blob/main/report.pdf)
+[presentation](https://furkathertaha.github.io/assets/images/presentation.pdf) &emsp;
+[document](https://furkathertaha.github.io/assets/images/report.pdf)
  
 ## Demo
 
