@@ -60,6 +60,9 @@ A WebGL-based Chinese dragon animation with STL loader and GLSL shader imposed v
 [Dragon Body](https://furkathertaha.github.io/assets/threeJS/sf/bodyy.stl) &emsp;
 [Dragon Claw](https://furkathertaha.github.io/assets/threeJS/sf/jiao.stl) &emsp;
 [Dragon Tail](https://furkathertaha.github.io/assets/threeJS/sf/wei.stl)
+
+[OpenJsCAD code](https://furkathertaha.github.io/assets/data/long.jscad)
+
 ## textures (png)
 [Cosmic Dust](https://furkathertaha.github.io/assets/threeJS/sf/thumb_contrast-noise.png)
 
@@ -68,8 +71,8 @@ A WebGL-based Chinese dragon animation with STL loader and GLSL shader imposed v
 [screengrab2](https://furkathertaha.github.io/assets/videos/long1.mp4)
 
 ## Presentation (pdf)
-[presentation](https://furkathertaha.github.io/assets/images/presentation.pdf) &emsp;
-[document](https://furkathertaha.github.io/assets/images/report.pdf)
+[presentation](https://furkathertaha.github.io/assets/docs/presentation.pdf) &emsp;
+[document](https://furkathertaha.github.io/assets/docs/report.pdf)
  
 ## Demo
 
